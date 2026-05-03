@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特定商取引法に基づく表記 | TransLayer</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090b;
+    --surface: #18181b;
+    --border: #27272a;
+    --border2: #3f3f46;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.8;
+  }
+
+  /* --- background decoration --- */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(9,9,11,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 24px;
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .back-link {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--text); }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 24px 120px;
+  }
+
+  .page-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.25);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 56px;
+  }
+
+  .table-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  tr {
+    border-bottom: 1px solid var(--border);
+  }
+  tr:last-child { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.015); }
+  th {
+    width: 200px;
+    padding: 22px 28px;
+    text-align: left;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    vertical-align: top;
+    background: rgba(0,0,0,0.2);
+    white-space: nowrap;
+  }
+  td {
+    padding: 22px 28px;
+    font-size: 0.88rem;
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.9;
+    transition: background 0.15s;
+  }
+  td .edit-hint {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #f59e0b;
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: 500;
+  }
+
+  .note-box {
+    margin-top: 40px;
+    background: rgba(59,130,246,0.07);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 10px;
+    padding: 20px 24px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .note-box strong { color: var(--accent2); }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--accent2); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    th { width: 120px; padding: 16px; font-size: 0.75rem; }
+    td { padding: 16px; font-size: 0.83rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">TransLayer</a>
+    <a href="index.html" class="back-link">← アプリに戻る</a>
+  </div>
+</header>
+
+<main>
+  <div class="page-label">Legal</div>
+  <h1>特定商取引法に基づく表記</h1>
+  <p class="subtitle">Specified Commercial Transactions Act</p>
+
+  <div class="table-wrapper">
+    <table>
+      <tbody>
+        <tr>
+          <th>販売業者</th>
+          <td>
+            ［あなたの氏名または会社名］<span class="edit-hint">要記入</span>
+          </td>
+        </tr>
+        <tr>
+          <th>代表者</th>
+          <td>
+            ［代表者氏名］<span class="edit-hint">要記入</span>
+          </td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>
+            ［住所を記載してください］<span class="edit-hint">要記入</span><br>
+            ※請求があった場合は遅滞なく開示いたします。
+          </td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td>
+            ［電話番号］<span class="edit-hint">要記入</span><br>
+            <span style="font-size:0.8rem;color:var(--muted)">受付時間：平日 10:00〜18:00（土日祝・年末年始を除く）</span>
+          </td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td>
+            ［support@example.com］<span class="edit-hint">要記入</span>
+          </td>
+        </tr>
+        <tr>
+          <th>サービス名</th>
+          <td>TransLayer（公文書翻訳支援ツール）</td>
+        </tr>
+        <tr>
+          <th>販売価格</th>
+          <td>
+            各プランページに表示する税込価格に準じます。<br>
+            <span style="font-size:0.8rem;color:var(--muted)">消費税（10%）を含む金額を表示しています。</span>
+          </td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td>
+            クレジットカード（Visa・Mastercard・American Express・JCB）<br>
+            <span style="font-size:0.8rem;color:var(--muted)">決済はStripe, Inc.が提供する安全な決済システムを利用しています。</span>
+          </td>
+        </tr>
+        <tr>
+          <th>支払時期</th>
+          <td>
+            月額プランの場合：契約日から毎月同日に自動更新・自動引き落とし<br>
+            年間プランの場合：契約日に一括引き落とし
+          </td>
+        </tr>
+        <tr>
+          <th>サービス提供時期</th>
+          <td>決済完了後、即時利用可能</td>
+        </tr>
+        <tr>
+          <th>返金・キャンセル</th>
+          <td>
+            月額プランは次回請求日の前日までにキャンセルすることで、翌月以降の請求を停止できます。<br>
+            既にお支払いいただいた料金の返金は、法令に定める場合を除き原則としてお受けできません。<br>
+            <span style="font-size:0.8rem;color:var(--muted)">サービス障害等による例外的な返金については、個別にご相談ください。</span>
+          </td>
+        </tr>
+        <tr>
+          <th>動作環境</th>
+          <td>
+            Google Chrome 最新版・Microsoft Edge 最新版・Safari 最新版（推奨）<br>
+            <span style="font-size:0.8rem;color:var(--muted)">Internet Explorer には対応しておりません。</span>
+          </td>
+        </tr>
+        <tr>
+          <th>その他</th>
+          <td>
+            本サービスはSaaS（Software as a Service）形態で提供するデジタルコンテンツです。<br>
+            特定商取引法第15条の3に定める返品特約として、デジタルコンテンツの性質上、
+            提供開始後の返金・返品には応じられませんのでご了承ください。
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note-box">
+    <strong>📝 開設者へのメモ（公開前に削除してください）</strong><br>
+    🟡 「要記入」マークのついた箇所を実際の情報に置き換えてください。<br>
+    🟡 個人事業主の場合、住所・電話番号は「請求があった場合に開示」という表記でも可ですが、メールアドレスは必須です。<br>
+    🟡 法人の場合は登記上の住所・代表者氏名を記載してください。
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 TransLayer. All rights reserved.</p>
+  <p style="margin-top:8px">
+    <a href="terms.html">利用規約</a>　|　
+    <a href="tokushoho.html">特定商取引法に基づく表記</a>　|　
+    <a href="pricing.html">料金プラン</a>
+  </p>
+</footer>
+
+</body>
+</html>
