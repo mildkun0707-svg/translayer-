@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>利用規約 | TransLayer</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090b;
+    --surface: #18181b;
+    --border: #27272a;
+    --border2: #3f3f46;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --em: #e4e4e7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.85;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    bottom: -150px; right: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  header {
+    position: sticky; top: 0;
+    background: rgba(9,9,11,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100; padding: 0 24px;
+  }
+  .header-inner {
+    max-width: 760px; margin: 0 auto;
+    height: 56px; display: flex;
+    align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--accent2); text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .back-link {
+    font-size: 0.78rem; color: var(--muted);
+    text-decoration: none; display: flex;
+    align-items: center; gap: 6px; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--text); }
+
+  /* TOC */
+  .toc {
+    position: fixed;
+    left: max(24px, calc(50% - 500px));
+    top: 120px;
+    width: 180px;
+    z-index: 50;
+  }
+  .toc-title {
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 12px; font-weight: 500;
+  }
+  .toc a {
+    display: block; font-size: 0.76rem;
+    color: var(--muted); text-decoration: none;
+    padding: 4px 0; border-left: 2px solid var(--border2);
+    padding-left: 10px; transition: all 0.2s;
+    margin-bottom: 2px;
+  }
+  .toc a:hover {
+    color: var(--accent2); border-left-color: var(--accent);
+  }
+  @media (max-width: 1100px) { .toc { display: none; } }
+
+  main {
+    position: relative; z-index: 1;
+    max-width: 760px; margin: 0 auto;
+    padding: 64px 24px 120px;
+  }
+
+  .page-label {
+    display: inline-block; font-size: 0.7rem;
+    font-weight: 500; letter-spacing: 0.15em;
+    color: var(--accent); text-transform: uppercase;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.25);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700; line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+  .version-date {
+    font-size: 0.78rem; color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 6px; display: inline-block;
+    padding: 6px 14px; margin-bottom: 52px;
+  }
+
+  .section {
+    margin-bottom: 52px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--em); margin-bottom: 18px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .num {
+    font-size: 0.7rem; font-weight: 500;
+    color: var(--accent); background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    padding: 2px 8px; border-radius: 4px;
+    font-family: 'Noto Sans JP', sans-serif;
+    white-space: nowrap;
+  }
+
+  p { font-size: 0.88rem; color: #d4d4d8; margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  ol, ul {
+    padding-left: 1.4em; margin-bottom: 14px;
+  }
+  li { font-size: 0.87rem; color: #d4d4d8; margin-bottom: 8px; line-height: 1.8; }
+
+  .highlight-box {
+    background: rgba(59,130,246,0.07);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 8px; padding: 18px 22px;
+    margin: 18px 0;
+  }
+  .highlight-box p { font-size: 0.85rem; margin: 0; color: var(--muted); }
+
+  .warn-box {
+    background: rgba(239,68,68,0.07);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 8px; padding: 18px 22px;
+    margin: 18px 0;
+  }
+  .warn-box p { font-size: 0.85rem; margin: 0; color: #fca5a5; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    text-align: center; padding: 32px 24px;
+    font-size: 0.75rem; color: var(--muted);
+  }
+  footer a { color: var(--accent2); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">TransLayer</a>
+    <a href="#" class="back-link">← アプリに戻る</a>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-title">目次</div>
+  <a href="#s1">第1条　目的・定義</a>
+  <a href="#s2">第2条　適用</a>
+  <a href="#s3">第3条　利用登録</a>
+  <a href="#s4">第4条　料金・支払</a>
+  <a href="#s5">第5条　禁止事項</a>
+  <a href="#s6">第6条　知的財産権</a>
+  <a href="#s7">第7条　免責事項</a>
+  <a href="#s8">第8条　サービス変更</a>
+  <a href="#s9">第9条　個人情報</a>
+  <a href="#s10">第10条　準拠法</a>
+</nav>
+
+<main>
+  <div class="page-label">Legal</div>
+  <h1>利用規約</h1>
+  <p class="subtitle">Terms of Service</p>
+  <span class="version-date">制定日：2025年 ／ 最終改定：2025年</span>
+
+  <div class="section" id="s1">
+    <h2><span class="num">第1条</span> 目的・定義</h2>
+    <p>本利用規約（以下「本規約」）は、TransLayer（以下「当サービス」）が提供する公文書翻訳支援ツールの利用条件を定めるものです。</p>
+    <p>本規約において使用する主な用語の定義は以下の通りです。</p>
+    <ol>
+      <li><strong>「利用者」</strong>：本規約に同意の上、当サービスを利用するすべての方</li>
+      <li><strong>「コンテンツ」</strong>：利用者が当サービスにアップロードする文書・画像等のデータ</li>
+      <li><strong>「翻訳結果」</strong>：当サービスのAI機能が生成した翻訳テキストおよび出力ファイル</li>
+    </ol>
+  </div>
+
+  <div class="section" id="s2">
+    <h2><span class="num">第2条</span> 適用</h2>
+    <p>本規約は、当サービスの利用に関する当サービス運営者と利用者との間のすべての関係に適用されます。</p>
+    <p>当サービスの利用を開始した時点で、利用者は本規約のすべての条項に同意したものとみなします。</p>
+  </div>
+
+  <div class="section" id="s3">
+    <h2><span class="num">第3条</span> 利用登録</h2>
+    <p>本サービスの有料プランを利用するには、所定の方法により利用登録を行う必要があります。</p>
+    <ol>
+      <li>登録時に虚偽の情報を申告した場合、利用登録を取り消すことがあります。</li>
+      <li>未成年者が登録する場合は、保護者の同意が必要です。</li>
+      <li>アカウントの管理は利用者自身の責任で行ってください。第三者への譲渡・貸与は禁止します。</li>
+    </ol>
+  </div>
+
+  <div class="section" id="s4">
+    <h2><span class="num">第4条</span> 料金・支払い・解約</h2>
+    <p>当サービスの料金は<a href="pricing.html" style="color:var(--accent2)">料金ページ</a>に記載の通りです。</p>
+    <ol>
+      <li>料金はStripe, Inc.の決済システムを通じてお支払いいただきます。</li>
+      <li>月額プランは契約日から毎月同日に自動更新されます。</li>
+      <li>解約はマイページまたはサポートへのご連絡にてお手続きください。次回請求日の前日23:59（日本時間）までに解約された場合、翌月の請求は発生しません。</li>
+      <li>既払い料金の返金は、法令に定める場合を除き原則として行いません。</li>
+    </ol>
+    <div class="highlight-box">
+      <p>💳 決済情報（クレジットカード番号等）は当サービスのサーバーには保存されません。Stripeの安全な環境で管理されます。</p>
+    </div>
+  </div>
+
+  <div class="section" id="s5">
+    <h2><span class="num">第5条</span> 禁止事項</h2>
+    <p>利用者は以下の行為を行ってはなりません。</p>
+    <ol>
+      <li>法令または公序良俗に違反する行為</li>
+      <li>犯罪行為に関連する行為または犯罪を助長する行為</li>
+      <li>当サービスのサーバーやネットワークへの不正アクセス・負荷をかける行為</li>
+      <li>当サービスの運営を妨害する行為</li>
+      <li>他の利用者または第三者の個人情報を不正に収集・取得・使用する行為</li>
+      <li>当サービスのAPIキーやシステムを不正に解析・抽出・悪用する行為</li>
+      <li>翻訳結果を利用した詐欺・偽造文書の作成その他違法行為</li>
+      <li>商業目的での当サービスの再販・転用（当社が別途認めた場合を除く）</li>
+      <li>その他、当社が不適切と判断する行為</li>
+    </ol>
+    <div class="warn-box">
+      <p>⚠️ 当サービスを通じて作成された翻訳文書は参考資料です。公式書類として提出する際は、必ず資格を有する翻訳者・行政書士等によるレビューと認証を受けてください。</p>
+    </div>
+  </div>
+
+  <div class="section" id="s6">
+    <h2><span class="num">第6条</span> 知的財産権</h2>
+    <p>当サービスのシステム・UI・プロンプト設計・国別翻訳ルール等に関する知的財産権は、当サービス運営者または正当な権利者に帰属します。</p>
+    <p>利用者がアップロードしたコンテンツの著作権は利用者に帰属します。当サービスは、サービス提供に必要な範囲でのみコンテンツを使用します。</p>
+    <p>利用者がアップロードしたコンテンツに第三者の著作物が含まれる場合、その取り扱いは利用者の責任において行ってください。</p>
+  </div>
+
+  <div class="section" id="s7">
+    <h2><span class="num">第7条</span> 免責事項</h2>
+    <p>当サービスは翻訳支援ツールであり、AIが生成した翻訳結果の正確性・完全性・法的有効性を保証するものではありません。</p>
+    <ol>
+      <li>翻訳結果を利用した際に生じた損害について、当社は一切の責任を負いません。</li>
+      <li>当サービスは予告なく仕様変更・一時停止・終了する場合があります。</li>
+      <li>天災・通信障害・外部APIの障害（Gemini API等）によるサービス停止について、当社は責任を負いません。</li>
+      <li>利用者間または利用者と第三者の間で生じたトラブルについて、当社は一切関与しません。</li>
+    </ol>
+  </div>
+
+  <div class="section" id="s8">
+    <h2><span class="num">第8条</span> サービスの変更・停止・終了</h2>
+    <p>当社は利用者への事前通知をもって、当サービスの内容の変更、一時停止、または終了を行うことができます。</p>
+    <p>サービス終了の場合は、終了日の30日前を目安に利用者へ通知し、残存利用期間に応じた料金の精算を行います。</p>
+  </div>
+
+  <div class="section" id="s9">
+    <h2><span class="num">第9条</span> 個人情報の取り扱い</h2>
+    <p>当社は、利用者の個人情報を適切に管理し、サービス提供の目的に必要な範囲でのみ使用します。詳細は別途定めるプライバシーポリシーをご確認ください。</p>
+    <p>当サービスにアップロードされた公文書の画像・テキストは、翻訳処理後に当社サーバーには保存しません（ブラウザのローカルストレージのみで管理されます）。</p>
+  </div>
+
+  <div class="section" id="s10">
+    <h2><span class="num">第10条</span> 準拠法・管轄裁判所</h2>
+    <p>本規約は日本法に準拠し、日本法に従って解釈されます。</p>
+    <p>本規約に関して紛争が生じた場合、大阪地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+    <div class="highlight-box">
+      <p>本規約は2025年に制定されました。最新版は常に本ページに掲載されます。改定の際は、重要な変更については登録メールアドレスへの通知またはアプリ内告知を行います。</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 TransLayer. All rights reserved.</p>
+  <p style="margin-top:8px">
+    <a href="terms.html">利用規約</a>　|　
+    <a href="tokushoho.html">特定商取引法に基づく表記</a>　|　
+    <a href="pricing.html">料金プラン</a>
+  </p>
+</footer>
+
+</body>
+</html>
